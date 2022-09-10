@@ -7,16 +7,25 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <div class="container">
+    <div
+        x-data="{
+            currentRegion: '',
+            regions: ['England', 'Wales', 'Scotland', 'London'] }"
+        class="container"
+    >
         <ul>
-            <li>England</li>
-            <li>Wales</li>
-            <li>Scotland</li>
-            <li>London</li>
+            <template x-for="item in regions">
+                <li
+                    x-text="item"
+                    :class="{ 'chosen': item == currentRegion }"
+                    @click="currentRegion = item"
+                ></li>
+            </template>
         </ul>
         <canvas id="chart-area"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script type="module" src="main.js"></script>
 </body>
 </html>

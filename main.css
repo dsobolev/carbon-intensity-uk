@@ -19,7 +19,16 @@ ul {
 
 li {
     padding: 0.5em 1em;
-    border: 3px solid red;
+    border: 3px solid #f9564f;
     border-radius: 1em;
     letter-spacing: 0.2em;
+}
+
+li:hover {
+    outline: 3px solid lightgray;
+}
+
+.chosen {
+    background-color: #f9564f;
+    color: white;
 }
