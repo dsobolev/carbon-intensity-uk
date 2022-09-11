@@ -11,7 +11,7 @@
 
         const myChart = new Chart(
             document.getElementById('chart-area'),
-            config
+            config.chart
         );
 
         window.chart = function() {
@@ -23,6 +23,21 @@
                     'Scotland',
                     'London'
                 ],
+
+                getData: /*async*/ function (region) {
+                    const url = this.getUrl(region);
+                    console.log(region, url);
+                    // const response = await fetch()
+                },
+
+                getUrl: function (regionName) {
+                    let param = regionName.toLowerCase();
+                    if ('london' === param) {
+                        param = 13;
+                    }
+
+                    return config.baseUrl + param;
+                }
             }
         }
     </script>
@@ -31,7 +46,7 @@
 <body>
     <div
         x-data="chart()"
-        x-init="$watch('currentRegion', val => console.log(val))"
+        x-init="$watch('currentRegion', val => getData(val))"
         class="container"
     >
         <ul>

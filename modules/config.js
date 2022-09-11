@@ -23,7 +23,10 @@ const data = {
 };
 
 export const config = {
-    type: 'pie',
-    data: data,
-    options: {}
+    chart: {
+        type: 'pie',
+        data: data,
+        options: {}
+    },
+    baseUrl: 'https://api.carbonintensity.org.uk/regional/'
 };
