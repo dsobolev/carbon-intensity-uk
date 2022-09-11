@@ -5,12 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Carbon Intensity</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+        import { config } from './modules/config.js';
+
+        const myChart = new Chart(
+            document.getElementById('chart-area'),
+            config
+        );
+
+        window.chart = function() {
+            return {
+                currentRegion: '',
+                regions: [
+                    'England',
+                    'Wales',
+                    'Scotland',
+                    'London'
+                ],
+            }
+        }
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
     <div
-        x-data="{
-            currentRegion: '',
-            regions: ['England', 'Wales', 'Scotland', 'London'] }"
+        x-data="chart()"
+        x-init="$watch('currentRegion', val => console.log(val))"
         class="container"
     >
         <ul>
@@ -24,8 +45,5 @@
         </ul>
         <canvas id="chart-area"></canvas>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script type="module" src="main.js"></script>
 </body>
 </html>
