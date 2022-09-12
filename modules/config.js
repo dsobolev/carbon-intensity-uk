@@ -1,10 +1,14 @@
-const labels = [
-    'Gas',
-    'Nuclear',
-    'Wind',
-    'Solar',
-    'Others'
+// To determine sequence of values
+const fuels = [
+    'gas',
+    'nuclear',
+    'wind',
+    'solar',
+    'others'
 ];
+
+// Labels for the chart
+const labels = fuels.map(item => item[0].toUpperCase() + item.slice(1));
 
 const data = {
     labels: labels,

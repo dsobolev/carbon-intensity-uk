@@ -8,6 +8,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module">
         import { config } from './modules/config.js';
+        import { formUrl } from './modules/util.js'
 
         const myChart = new Chart(
             document.getElementById('chart-area'),
@@ -24,19 +25,18 @@
                     'London'
                 ],
 
-                getData: /*async*/ function (region) {
+                getData: async function (region) {
                     const url = this.getUrl(region);
-                    console.log(region, url);
-                    // const response = await fetch()
+                    const response = await fetch(url);
+                    const result = await response.json();
+
+                    const dataToAnalyze = result.data[0].data[0].generationmix;
+                    console.log(dataToAnalyze);
                 },
 
                 getUrl: function (regionName) {
-                    let param = regionName.toLowerCase();
-                    if ('london' === param) {
-                        param = 13;
-                    }
 
-                    return config.baseUrl + param;
+                    return formUrl(config.baseUrl, regionName);
                 }
             }
         }
