@@ -8,7 +8,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module">
         import { config } from './modules/config.js';
-        import { formUrl } from './modules/util.js'
+        import { formUrl, buildChartDataValues } from './modules/util.js'
 
         const myChart = new Chart(
             document.getElementById('chart-area'),
@@ -32,6 +32,9 @@
 
                     const dataToAnalyze = result.data[0].data[0].generationmix;
                     console.log(dataToAnalyze);
+
+                    const values = buildChartDataValues(config.fuelsSequence, dataToAnalyze);
+                    console.log(values);
                 },
 
                 getUrl: function (regionName) {

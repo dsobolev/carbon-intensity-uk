@@ -4,7 +4,7 @@ const fuels = [
     'nuclear',
     'wind',
     'solar',
-    'others'
+    'other'
 ];
 
 // Labels for the chart
@@ -32,5 +32,6 @@ export const config = {
         data: data,
         options: {}
     },
-    baseUrl: 'https://api.carbonintensity.org.uk/regional/'
+    baseUrl: 'https://api.carbonintensity.org.uk/regional/',
+    fuelsSequence: fuels
 };
