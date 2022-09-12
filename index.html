@@ -31,10 +31,10 @@
                     const result = await response.json();
 
                     const dataToAnalyze = result.data[0].data[0].generationmix;
-                    console.log(dataToAnalyze);
-
                     const values = buildChartDataValues(config.fuelsSequence, dataToAnalyze);
-                    console.log(values);
+
+                    const chartData = config.updateDataValues(values);
+                    console.log(chartData);
                 },
 
                 getUrl: function (regionName) {

@@ -13,7 +13,7 @@ const labels = fuels.map(item => item[0].toUpperCase() + item.slice(1));
 const data = {
     labels: labels,
     datasets: [{
-        label: 'My First dataset',
+        label: 'Carbon Intencity in...',
         backgroundColor: [
             '#f3c677',
             '#b33f62',
@@ -21,7 +21,7 @@ const data = {
             '#f9564f',
             '#0c0a3e'
         ],
-        data: [300, 50, 100, 20, 50],
+        data: [],
         hoverOffset: 4
     }]
 };
@@ -33,5 +33,13 @@ export const config = {
         options: {}
     },
     baseUrl: 'https://api.carbonintensity.org.uk/regional/',
-    fuelsSequence: fuels
+    fuelsSequence: fuels,
+
+    chartElement: document.getElementById('chart-area'),
+
+    updateDataValues: function (values) {
+        this.chart.data.datasets.data = values;
+
+        return this.chart;
+    }
 };
