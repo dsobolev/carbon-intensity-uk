@@ -21,7 +21,7 @@ const data = {
             '#f9564f',
             '#0c0a3e'
         ],
-        data: [],
+        data: Array(fuels.length).fill(0),
         hoverOffset: 4
     }]
 };
@@ -36,10 +36,4 @@ export const config = {
     fuelsSequence: fuels,
 
     chartElement: document.getElementById('chart-area'),
-
-    updateDataValues: function (values) {
-        this.chart.data.datasets.data = values;
-
-        return this.chart;
-    }
 };

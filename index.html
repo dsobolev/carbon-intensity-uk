@@ -8,12 +8,12 @@
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module">
         import { config } from './modules/config.js';
-        import { formUrl, buildChartDataValues } from './modules/util.js'
-
-        const myChart = new Chart(
-            document.getElementById('chart-area'),
-            config.chart
-        );
+        import {
+            formUrl,
+            buildChartDataValues,
+            initChart,
+            redrawChart
+        } from './modules/util.js'
 
         window.chart = function() {
             return {
@@ -25,6 +25,10 @@
                     'London'
                 ],
 
+                init: function() {
+                    window.chart = initChart(config.chartElement, config.chart);
+                },
+
                 getData: async function (region) {
                     const url = this.getUrl(region);
                     const response = await fetch(url);
@@ -33,8 +37,7 @@
                     const dataToAnalyze = result.data[0].data[0].generationmix;
                     const values = buildChartDataValues(config.fuelsSequence, dataToAnalyze);
 
-                    const chartData = config.updateDataValues(values);
-                    console.log(chartData);
+                    redrawChart(window.chart, values);
                 },
 
                 getUrl: function (regionName) {

@@ -33,3 +33,22 @@ export function buildChartDataValues(sequence, data) {
 
     return result;
 }
+
+/* Inits (draws) a pie chart
+ *
+ * @param element [HTMLElement] Element to display chart in
+ * @param chartData [Object] Configuration data for a chart
+ */
+export function initChart(element, chartData) {
+    return new Chart(element, chartData);
+}
+
+/* Redraws a pie chart
+ *
+ * @param chart [Chart] Chart object element
+ * @param values [Array] Values to be displayed in the chart
+ */
+export function redrawChart(chart, values) {
+    chart.data.datasets[0].data = values;
+    chart.update();
+}
