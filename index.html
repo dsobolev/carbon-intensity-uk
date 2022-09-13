@@ -50,21 +50,22 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
-    <div
-        x-data="chart()"
-        x-init="$watch('currentRegion', val => getData(val))"
-        class="container"
-    >
-        <ul>
-            <template x-for="item in regions">
-                <li
-                    x-text="item"
-                    :class="{ 'chosen': item == currentRegion }"
-                    @click="currentRegion = item"
-                ></li>
-            </template>
-        </ul>
-        <canvas id="chart-area"></canvas>
+    <div class="container">
+        <div
+            x-data="chart()"
+            x-init="$watch('currentRegion', val => getData(val))"
+        >
+            <ul>
+                <template x-for="item in regions">
+                    <li
+                        x-text="item"
+                        :class="{ 'chosen': item == currentRegion }"
+                        @click="currentRegion = item"
+                    ></li>
+                </template>
+            </ul>
+        </div>
+        <canvas id="chart-area" width="400" height="400"></canvas>
     </div>
 </body>
 </html>
