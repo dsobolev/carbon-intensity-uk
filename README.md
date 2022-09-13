@@ -8,6 +8,9 @@ with the use of [Carbon Intensity API](https://carbon-intensity.github.io/api-de
 - [Chart.js](https://www.chartjs.org) - JS charting tool
 - JS modules
 
+### How it looks
+![carbon intensity pie chart](chartjs.png)
+
 ### Notes
 - Just simple styling were applied here. App is not responsive, was developed/tested on comparatively small screen (15" laptop)
 - Local server should be used to run the app. In my case, there was a PHP local server (`php -S localhost` in the main app folder)
